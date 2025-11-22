@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const PokeApi = () => {
     const [pokemon, setPokemon] = useState([])
 
     useEffect(() =>{
         const fetchData = async () => {
-            const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
+            const response = await fetch('https://pokebuildapi.fr/api/v1/pokemon')
             const data = await response.json()
-            setPokemon(data.results)
+            setPokemon(data)
         }
         fetchData()
     }, [])
@@ -18,7 +18,7 @@ const PokeApi = () => {
         <ul>
             {pokemon.map((poke, index) => (
                 <li key={index}>{poke.name}
-                    <img src={poke.image} alt={poke.name} width={100}/>
+                    <img src={poke.image} alt={poke.index} width={100}/>
                 </li>
             ))}
         </ul>
