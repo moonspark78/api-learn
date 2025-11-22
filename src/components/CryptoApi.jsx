@@ -9,13 +9,20 @@ const CryptoApi = () => {
             const data = await response.json()
             setCrypto(data)
         }
+        fetchData()
     },[])
 
 
   return (
     <div>
         <h1>CryptoApi</h1>
-
+        <ul>
+            {crypto.map((coin, id) =>(
+                <li key={id}>{coin.name}
+                    <img src={coin.image} alt={coin.name} width={50}/>
+                </li>
+            ))}
+        </ul>
     </div>
   )
 }
